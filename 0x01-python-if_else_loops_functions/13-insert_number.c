@@ -4,7 +4,7 @@
  * insert_node - inserts a number into a sorted singly linked list
  * @head: node head
  * @number: the num to stored
- * 
+ *
  * Return: the address of the new node, or NULL if it failed
  */
 listint_t *insert_node(listint_t **head, int number)
@@ -19,7 +19,7 @@ listint_t *insert_node(listint_t **head, int number)
 
 	new_set->n = number;
 
-	if (number < current->n)
+	if (*head == NULL || number < current->n)
 	{
 		new_set->next = (*head);
 		(*head) = new_set;
@@ -35,6 +35,11 @@ listint_t *insert_node(listint_t **head, int number)
 				break;
 			}
 			current = current->next;
+		}
+		if (current->next == NULL)
+		{
+			current->next = new_set;
+			new_set->next = NULL;
 		}
 	}
 	return (new_set);
