@@ -10,6 +10,6 @@ if __name__ == '__main__':
         print("0 arguments.")
         sys.exit()
 
-    print(f"{n_args} {'argument' if n_args == 1 else 'arguments'}:")
+    print("{} {}:".format(n_args, 'argument' if n_args == 1 else 'arguments'))
     for index, arg in enumerate(args):
-        print(f"{index+1}: {arg}")
+        print("{}: {}".format(index + 1, arg))
