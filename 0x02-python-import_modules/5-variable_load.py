@@ -2,4 +2,4 @@
 import variable_load_5
 
 
-print(variable_load_5.a)
+print("{}".format(variable_load_5.a))
