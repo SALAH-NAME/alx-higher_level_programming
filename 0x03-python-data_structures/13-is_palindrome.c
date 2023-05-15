@@ -27,6 +27,7 @@ int is_palindrome(listint_t **head)
 	listint_t *current = *head;
 	listint_t *stack = NULL;
 	listint_t *b_stack = NULL;
+	int len = 0, b_len = 0;
 
 	if (*head == NULL || (*head)->next == NULL)
 		return (1);
@@ -34,13 +35,19 @@ int is_palindrome(listint_t **head)
 	while (current != NULL)
 	{
 		add_nodeint_start(&stack, current->n);
+		if (current->n == current->next->n)
+		{
+			len++;
+			current = current->next;
+			break;
+		}
 		current = current->next;
 	}
 
-	current = *head;
+	/* current = *head; */
 	b_stack = stack;
 
-	while (current != NULL)
+	while (current != NULL && b_len != len)
 	{
 		if (current->n != b_stack->n)
 		{
@@ -49,6 +56,7 @@ int is_palindrome(listint_t **head)
 		}
 		current = current->next;
 		b_stack = b_stack->next;
+		b_len++;
 	}
 	free_listint(stack);
 	return (1);
