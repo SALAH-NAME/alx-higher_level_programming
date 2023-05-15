@@ -34,15 +34,10 @@ int is_palindrome(listint_t **head)
 	while (current != NULL)
 	{
 		add_nodeint_start(&stack, current->n);
-		if (current->n == current->next->n)
-		{
-			current = current->next;
-			break;
-		}
 		current = current->next;
 	}
 
-	/* current = *head; */
+	current = *head;
 	b_stack = stack;
 
 	while (current != NULL && b_stack != NULL)
