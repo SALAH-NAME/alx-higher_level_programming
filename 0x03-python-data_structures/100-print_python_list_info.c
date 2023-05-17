@@ -4,7 +4,7 @@
 /**
  * print_python_list_info - prints info about a python list
  * @p: pointer to PyObject
- * Return: void 
+ * Return: void
  */
 void print_python_list_info(PyObject *p)
 {
