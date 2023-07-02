@@ -1,0 +1,34 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+>>> text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo?"
+>>> text_indentation(text)
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+<BLANKLINE>
+Quonam modo?
+<BLANKLINE>
+>>> text = "Utrum igitur tibi litteram videor an totas paginas commovere?"
+>>> text_indentation(text)
+Utrum igitur tibi litteram videor an totas paginas commovere?
+<BLANKLINE>
+>>> text = "Non autem hoc: igitur ne illud quidem."
+>>> text_indentation(text)
+Non autem hoc:
+<BLANKLINE>
+igitur ne illud quidem.
+<BLANKLINE>
+>>> text = "Fortasse id optimum, sed ubi illud: Plus semper voluptatis?"
+>>> text_indentation(text)
+Fortasse id optimum, sed ubi illud:
+<BLANKLINE>
+Plus semper voluptatis?
+<BLANKLINE>
+>>> text = 12
+>>> text_indentation(text)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
+>>> text = None
+>>> text_indentation(text)
+Traceback (most recent call last):
+	    ...
+TypeError: text must be a string
