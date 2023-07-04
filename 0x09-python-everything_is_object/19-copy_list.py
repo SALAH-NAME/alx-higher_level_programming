@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-def copy_list(l):
+def copy_list(tab):
     """
-    This function takes a list as an argument and returns a shallow copy of the list.
-    :param l: list
-    :return: list
+    Returns a copy of a list
+
+    Args:
+        tab (list): The input list to be copied
     """
-    return l[:]
+    return tab[:]
