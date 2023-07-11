@@ -22,5 +22,5 @@ def append_write(filename="", text=""):
 
 
 if __name__ == "__main__":
-    nb_characters_added = append_write("file_append.txt", "This School is so cool!\n")
-    print(nb_characters_added)
+    nb_chars_add = append_write("file_append.txt", "This School is so cool!\n")
+    print(nb_chars_add)
