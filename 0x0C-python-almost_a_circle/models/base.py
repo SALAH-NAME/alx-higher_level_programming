@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines the Base class for the project"""
 import json
+import csv
 import os
 
 
@@ -65,3 +66,43 @@ class Base:
             else:
                 list_dicts = [obj.to_dictionary() for obj in list_objs]
                 f.write(cls.to_json_string(list_dicts))
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Writes the CSV string representation of list_objs to a file"""
+        filename = cls.__name__ + ".csv"
+        with open(filename, 'w', newline='') as f:
+            if list_objs is None or len(list_objs) == 0:
+                f.write("[]")
+            else:
+                writer = csv.writer(f)
+                if cls.__name__ == "Rectangle":
+                    writer.writerow(["id", "width", "height", "x", "y"])
+                    for obj in list_objs:
+                        writer.writerow(
+                                [obj.id, obj.width, obj.height, obj.x, obj.y])
+                elif cls.__name__ == "Square":
+                    writer.writerow(["id", "size", "x", "y"])
+                    for obj in list_objs:
+                        writer.writerow([obj.id, obj.size, obj.x, obj.y])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Returns a list of instances"""
+        filename = cls.__name__ + ".csv"
+        if not os.path.exists(filename):
+            return []
+        with open(filename, 'r') as f:
+            reader = csv.reader(f)
+            header = next(reader)
+            if cls.__name__ == "Rectangle":
+                attrs = ["id", "width", "height", "x", "y"]
+            elif cls.__name__ == "Square":
+                attrs = ["id", "size", "x", "y"]
+            objs = []
+            for row in reader:
+                d = {}
+                for i, attr in enumerate(attrs):
+                    d[attr] = int(row[i])
+                objs.append(cls.create(**d))
+            return objs
