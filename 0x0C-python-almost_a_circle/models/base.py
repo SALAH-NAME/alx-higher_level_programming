@@ -37,6 +37,13 @@ class Base:
             return json.loads(json_string)
 
     @classmethod
+    def create(cls, **dictionary):
+        """Returns an instance with all attributes already set"""
+        dummy = cls(1, 1)
+        dummy.update(**dictionary)
+        return dummy
+
+    @classmethod
     def save_to_file(cls, list_objs):
         """Writes the JSON string representation of list_objs to a file"""
         filename = cls.__name__ + ".json"
