@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Defines the Base class for the project"""
+import turtle
 import json
 import csv
 import os
@@ -106,3 +107,39 @@ class Base:
                     d[attr] = int(row[i])
                 objs.append(cls.create(**d))
             return objs
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Create a screen"""
+        screen = turtle.Screen()
+        screen.bgcolor("white")
+        screen.title("Draw Rectangles and Squares")
+
+        """Create a turtle object"""
+        pen = turtle.Turtle()
+        pen.speed(10)
+
+        """Draw rectangles"""
+        for rect in list_rectangles:
+            pen.penup()
+            pen.goto(rect.x, rect.y)
+            pen.pendown()
+            pen.color("red")
+            for i in range(2):
+                pen.forward(rect.width)
+                pen.left(90)
+                pen.forward(rect.height)
+                pen.left(90)
+
+        """Draw squares"""
+        for sq in list_squares:
+            pen.penup()
+            pen.goto(sq.x, sq.y)
+            pen.pendown()
+            pen.color("blue")
+            for i in range(4):
+                pen.forward(sq.size)
+                pen.left(90)
+
+        """Keep the window open"""
+        turtle.mainloop()
