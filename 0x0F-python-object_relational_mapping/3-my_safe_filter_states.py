@@ -12,6 +12,7 @@ if __name__ == "__main__":
     c.execute(st, (sys.argv[4],))
     rows = c.fetchall()
     for row in rows:
-        print(row)
+        if row[1] == sys.argv[4]:
+            print(row)
     c.close()
     db.close()
