@@ -10,7 +10,7 @@ if __name__ == "__main__":
     c = db.cursor()
     c.execute("SELECT c.name FROM cities c \
             JOIN states s ON s.id=c.state_id \
-            WHERE s.name=%s ORDER BY c.id", (args[4],))
+            WHERE s.name=%s ORDER BY c.id", (sys.argv[4],))
     rows = c.fechall()
     print(", ".join(row[2] for row in rows))
     c.close()
