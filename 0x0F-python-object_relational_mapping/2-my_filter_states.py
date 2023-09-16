@@ -10,4 +10,8 @@ if __name__ == "__main__":
     st = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC"
     c.execute(st.format(sys.argv[4]))
     rows = c.fetchall()
-    [print(row) for row in rows]
+    for row in rows:
+        if row[1] == sys.argv[4]:
+            print(row)
+    c.close()
+    db.close()
