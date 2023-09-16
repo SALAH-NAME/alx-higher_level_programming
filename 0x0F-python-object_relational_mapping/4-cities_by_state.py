@@ -7,11 +7,10 @@ import sys
 if __name__ == "__main__":
     db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
     c = db.cursor()
-    cur.execute("SELECT c.id, c.name, s.name FROM cities c\
-                JOIN states s ON s.id=c.state_id \
-                ORDER BY c.id")
+    cur.execute("SELECT c.id, c.name, s.name FROM cities as c\
+                JOIN states as s ON s.id=c.state_id ORDER BY c.id")
     rows = cur.fetchall()
     for row in rows:
         print(row)
     c.close()
-    db.close()
+    b.close()
