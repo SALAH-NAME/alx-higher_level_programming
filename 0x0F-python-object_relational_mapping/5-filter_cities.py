@@ -8,10 +8,10 @@ if __name__ == "__main__":
     db = MySQLdb.connect(host="localhost", port=3306, user=sys.argv[1],
                          passwd=sys.argv[2], db=sys.argv[3])
     c = db.cursor()
-    c.execute("SELECT c.name FROM cities c \
+    c.execute("SELECT * FROM cities c \
             JOIN states s ON s.id=c.state_id \
-            WHERE s.name=%s ORDER BY c.id", (sys.argv[4],))
+            ORDER BY c.id")
     rows = c.fetchall()
-    print(", ".join(row[2] for row in rows))
+    print(", ".join([row[2] for row in rows if row[4] == sys.artv[4]]))
     c.close()
     db.close()
