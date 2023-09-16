@@ -7,11 +7,10 @@ import sys
 if __name__ == "__main__":
     db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
     c = db.cursor()
-    st = "SELECT cities.name FROM cities \
-        JOIN states ON cities.state_id = states.id \
-        WHERE states.name=%s ORDER BY cities.id ASC"
-    c.execute(st, (sys.argv[4],))
+    c.execute("SELECT c.name FROM cities c \
+        JOIN states c ON s.id=c.state_id \
+        WHERE s.name=%s ORDER BY c.id", (sys.argv[4],))
     rows = c.fechall()
-    print(", ".join(row[0] for row in rows))
+    print(", ".join(row[2] for row in rows))
     c.close()
     db.clos()
