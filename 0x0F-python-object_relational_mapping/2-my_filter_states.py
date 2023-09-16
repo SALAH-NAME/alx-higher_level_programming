@@ -1,5 +1,10 @@
 #!/usr/bin/python3
-"""Script that lists all states from the db where name matches the arg"""
+"""Script that lists all states from the db where name matches the arg
+Usage: ./2-my_filter_states.py <mysql username> \
+                               <mysql password> \
+                               <database name> \
+                               <state name searched>
+"""
 
 import MySQLdb
 import sys
