@@ -17,3 +17,4 @@ if __name__ == "__main__":
     session.add(sf)
     session.add(cal)
     session.commit()
+    session.close()
