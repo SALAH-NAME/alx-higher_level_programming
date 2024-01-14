@@ -1,5 +1,6 @@
-!/usr/bin/python3
+#!/usr/bin/python3
 """Script that creates the State “C” with the City “S F” from the db"""
+
 
 import sys
 from sqlalchemy import create_engine
