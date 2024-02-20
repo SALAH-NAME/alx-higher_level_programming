@@ -10,7 +10,7 @@ request(url, function (error, response, body) {
     return;
   }
   const data = JSON.parse(body);
-  data.characters.forEach(function(characterUrl) {
+  data.characters.forEach(function (characterUrl) {
     request(characterUrl, function (error, response, body) {
       if (error) {
         console.error(error);
