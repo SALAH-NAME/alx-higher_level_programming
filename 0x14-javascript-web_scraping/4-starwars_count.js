@@ -12,8 +12,7 @@ request(apiUrl, function (error, response, body) {
   const data = JSON.parse(body);
   let count = 0;
   for (let i = 0; i < data.results.length; i++) {
-    const str = `https://swapi-api.alx-tools.com/api/people/${characterId}/`;
-    if (data.results[i].characters.includes(str)) {
+    if (data.results[i].characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)) {
       count++;
     }
   }
